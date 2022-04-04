@@ -8,7 +8,36 @@ import { BsCartCheck } from "react-icons/bs";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "./Sidebar.css";
-function Sidebar() {
+
+const routes = [
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: <FaHome />,
+  },
+  {
+    path: "/users",
+    name: "Users",
+    icon: <FaUser />,
+  },
+  {
+    path: "/messages",
+    name: "Messages",
+    icon: <MdMessage />,
+  },
+  {
+    path: "/analytics",
+    name: "Analytics",
+    icon: <BiAnalyse />,
+  },
+  {
+    path: "/order",
+    name: "Order",
+    icon: <BsCartCheck />,
+  },
+];
+
+function Sidebar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const inputAnimation = {
@@ -93,7 +122,35 @@ function Sidebar() {
             )}
           </AnimatePresence>
         </div>
+        <section className="routes">
+          {routes.map((route, index) => {
+            return (
+              <NavLink
+                to={route.path}
+                key={index}
+                className="link"
+                activeClassName="active"
+              >
+                <div className="icon">{route.icon}</div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      variants={showAnimation}
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      className="link_text"
+                    >
+                      {route.name}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </NavLink>
+            );
+          })}
+        </section>
       </motion.div>
+      <main>{children}</main>
     </div>
   );
 }

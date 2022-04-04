@@ -7,11 +7,10 @@
 .main-container {
   display: flex;
 }
-.top-section{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .search {
   display: flex;
@@ -40,3 +39,5 @@
   display: grid;
   place-items: center;
 }
+
+  
