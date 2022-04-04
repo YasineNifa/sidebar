@@ -7,7 +7,7 @@ import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import './Sidebar.css'
+import "./Sidebar.css";
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -76,10 +76,10 @@ function Sidebar() {
             <FaBars onClick={toggle} />
           </div>
           <div className="search">
-              <div className="search-icon">
-                  <BiSearch/>
-              </div>
-              <AnimatePresence>
+            <div className="search-icon">
+              <BiSearch />
+            </div>
+            <AnimatePresence>
               {isOpen && (
                 <motion.input
                   initial="hidden"
@@ -91,7 +91,6 @@ function Sidebar() {
                 />
               )}
             </AnimatePresence>
-
           </div>
         </div>
       </motion.div>
