@@ -75,6 +75,24 @@ function Sidebar() {
           <div className="bars">
             <FaBars onClick={toggle} />
           </div>
+          <div className="search">
+              <div className="search-icon">
+                  <BiSearch/>
+              </div>
+              <AnimatePresence>
+              {isOpen && (
+                <motion.input
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={inputAnimation}
+                  type="text"
+                  placeholder="Search"
+                />
+              )}
+            </AnimatePresence>
+
+          </div>
         </div>
       </motion.div>
     </div>
