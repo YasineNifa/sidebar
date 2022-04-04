@@ -1,5 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .main-container {
   display: flex;
+}
+.top-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
 }
 .search {
   display: flex;
@@ -16,4 +28,15 @@
   background: rgb(238, 238, 238);
 
   color: white;
+}
+.sidebar {
+  background: rgb(0, 7, 61);
+  color: white;
+  height: 100vh;
+  overflow-y: auto;
+}
+.title {
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
 }
