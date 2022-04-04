@@ -7,7 +7,9 @@ import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import SidebarMenu from './SidebarMenu'
 import "./Sidebar.css";
+
 
 const routes = [
   {
@@ -34,6 +36,29 @@ const routes = [
     path: "/order",
     name: "Order",
     icon: <BsCartCheck />,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    icon: <BiCog />,
+    exact: true,
+    subRoutes: [
+      {
+        path: "/settings/profile",
+        name: "Profile ",
+        icon: <FaUser />,
+      },
+      {
+        path: "/settings/2fa",
+        name: "2FA",
+        icon: <FaLock />,
+      },
+      {
+        path: "/settings/billing",
+        name: "Billing",
+        icon: <FaMoneyBill />,
+      },
+    ],
   },
 ];
 
@@ -124,6 +149,16 @@ function Sidebar({ children }) {
         </div>
         <section className="routes">
           {routes.map((route, index) => {
+            if (route.subRoutes) {
+              return (
+                <SidebarMenu
+                  setIsOpen={setIsOpen}
+                  route={route}
+                  showAnimation={showAnimation}
+                  isOpen={isOpen}
+                />
+              );
+            }
             return (
               <NavLink
                 to={route.path}
